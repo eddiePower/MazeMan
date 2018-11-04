@@ -1,24 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uZT-oG-vA0">
+    <device id="retina5_5" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MazeMan-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController title="MazeMan" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="zyt-Oy-pfJ">
+                                <rect key="frame" x="20" y="44" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="weg-PE-QdP">
+                                <rect key="frame" x="80" y="76" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="j7H-hv-lNI">
+                                <rect key="frame" x="141" y="108" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="LPW-0m-IPb">
+                                <rect key="frame" x="274" y="207" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="exit" translatesAutoresizingMaskIntoConstraints="NO" id="ly2-d8-fX9">
+                                <rect key="frame" x="670" y="190" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="ghost" translatesAutoresizingMaskIntoConstraints="NO" id="n0E-op-qB5">
+                                <rect key="frame" x="181" y="317" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="ghost" translatesAutoresizingMaskIntoConstraints="NO" id="Yuw-dH-OTW">
+                                <rect key="frame" x="371" y="44" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="ghost" translatesAutoresizingMaskIntoConstraints="NO" id="VUC-M8-wVy">
+                                <rect key="frame" x="427" y="317" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="pacman" translatesAutoresizingMaskIntoConstraints="NO" id="9sj-uC-K41">
+                                <rect key="frame" x="20" y="207" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="f2u-xG-Ydm">
+                                <rect key="frame" x="656" y="44" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="7z6-ay-cym">
+                                <rect key="frame" x="588" y="281" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="aXX-5U-3xH">
+                                <rect key="frame" x="649" y="317" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="Vcc-dO-O24">
+                                <rect key="frame" x="526" y="240" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="MazeMan v0.0.1" largeTitleDisplayMode="never" id="KvK-Pb-K4b"/>
+                    <connections>
+                        <outlet property="exit" destination="ly2-d8-fX9" id="0De-Yj-c3j"/>
+                        <outlet property="ghost1" destination="n0E-op-qB5" id="ryR-Gi-aZS"/>
+                        <outlet property="ghost2" destination="Yuw-dH-OTW" id="lRE-zf-XHd"/>
+                        <outlet property="ghost3" destination="VUC-M8-wVy" id="lXT-KO-h0H"/>
+                        <outlet property="pacman" destination="9sj-uC-K41" id="k1l-Pz-GeY"/>
+                        <outletCollection property="wall" destination="zyt-Oy-pfJ" id="kxa-Xj-j8L"/>
+                        <outletCollection property="wall" destination="weg-PE-QdP" id="X55-zB-3SO"/>
+                        <outletCollection property="wall" destination="j7H-hv-lNI" id="47C-oU-8Fy"/>
+                        <outletCollection property="wall" destination="LPW-0m-IPb" id="YdQ-E0-6fI"/>
+                        <outletCollection property="wall" destination="Vcc-dO-O24" id="9Lj-zl-CQK"/>
+                        <outletCollection property="wall" destination="7z6-ay-cym" id="M9p-fy-2Qg"/>
+                        <outletCollection property="wall" destination="aXX-5U-3xH" id="apk-Wr-Ht5"/>
+                        <outletCollection property="wall" destination="f2u-xG-Ydm" id="aXP-Lk-7BS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="214.4021739130435" y="-266.66666666666669"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ak0-Wk-nGp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uZT-oG-vA0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TXm-4A-APG">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qsj-0F-uxo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kOs-y3-cF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-543.10344827586209" y="-266.39999999999998"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="exit" width="20.135593414306641" height="20.135593414306641"/>
+        <image name="ghost" width="32" height="32"/>
+        <image name="pacman" width="32" height="32"/>
+        <image name="squareWall" width="40.421051025390625" height="40.421051025390625"/>
+    </resources>
 </document>

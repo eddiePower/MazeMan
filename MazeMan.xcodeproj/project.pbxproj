@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5D3CBC218E881300793908 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5D3CBB218E881300793908 /* CoreMotion.framework */; };
+		2C5D3CBE218E882E00793908 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5D3CBD218E882E00793908 /* QuartzCore.framework */; };
 		2C6ED130218DE35E00F57CAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6ED12F218DE35E00F57CAD /* AppDelegate.m */; };
 		2C6ED133218DE35E00F57CAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6ED132218DE35E00F57CAD /* ViewController.m */; };
 		2C6ED136218DE35E00F57CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6ED134218DE35E00F57CAD /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C5D3CBB218E881300793908 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		2C5D3CBD218E882E00793908 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2C6ED12B218DE35E00F57CAD /* MazeMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6ED12E218DE35E00F57CAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2C6ED12F218DE35E00F57CAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5D3CBE218E882E00793908 /* QuartzCore.framework in Frameworks */,
+				2C5D3CBC218E881300793908 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C5D3CBA218E881300793908 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C5D3CBD218E882E00793908 /* QuartzCore.framework */,
+				2C5D3CBB218E881300793908 /* CoreMotion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2C6ED122218DE35E00F57CAD = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +100,7 @@
 				2C6ED146218DE35F00F57CAD /* MazeManTests */,
 				2C6ED151218DE35F00F57CAD /* MazeManUITests */,
 				2C6ED12C218DE35E00F57CAD /* Products */,
+				2C5D3CBA218E881300793908 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +215,11 @@
 				TargetAttributes = {
 					2C6ED12A218DE35E00F57CAD = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2C6ED142218DE35F00F57CAD = {
 						CreatedOnToolsVersion = 10.1;
