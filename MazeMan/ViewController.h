@@ -10,6 +10,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface ViewController : UIViewController
+
 @property (strong, nonatomic) IBOutlet UIImageView *pacman;
 @property (strong, nonatomic) IBOutlet UIImageView *ghost1;
 @property (strong, nonatomic) IBOutlet UIImageView *ghost2;
@@ -27,5 +28,11 @@
 @property (strong, nonatomic) NSOperationQueue *queue;
 @property (strong, nonatomic) NSDate *lastUpdateTime;
 
-@end
+@property (strong, nonatomic) NSNumber *currentScore;
+@property (assign, nonatomic) NSInteger *highScore;
+@property (assign, nonatomic) NSInteger *userId;
+@property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSDate *playedDate;
+@property (strong, nonatomic) NSNumber *livesLeft;
 
+@end

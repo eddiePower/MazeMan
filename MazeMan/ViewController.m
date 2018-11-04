@@ -9,16 +9,15 @@
 #import "ViewController.h"
 #import <QuartzCore/CAAnimation.h>
 #import <CoreMotion/CoreMotion.h>
-
+//const time per update tick
 #define kUpdateInterval (1.0f / 60.0f)
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
    
@@ -51,13 +50,13 @@
     //ghost 2 as above
     CGPoint origin2 = self.ghost2.center;
     CGPoint target2 = CGPointMake(self.ghost2.center.x, self.ghost2.center.y+284);
-    CABasicAnimation *bounce2 = [CABasicAnimation animationWithKeyPath:@"position.y"];
+    CABasicAnimation *bounce2 = [CABasicAnimation animationWithKeyPath: @"position.y"];
     bounce2.fromValue = [NSNumber numberWithInt:origin2.y];
     bounce2.toValue = [NSNumber numberWithInt:target2.y];
     bounce2.duration = 2;
     bounce2.repeatCount = HUGE_VALF;
     bounce2.autoreverses = YES;
-    [self.ghost2.layer addAnimation:bounce2 forKey:@"position"];
+    [self.ghost2.layer addAnimation: bounce2 forKey: @"position"];
     
     //ghost3 as above.
     CGPoint origin3 = self.ghost3.center;
@@ -70,30 +69,52 @@
     bounce3.autoreverses = YES;
     [self.ghost3.layer addAnimation:bounce3 forKey:@"position"];
 
-    // Movement of pacman
+    /*
+     * Create the motion / accelerometer manager object,
+     * date object last update - will also be used as played date for high scores.
+     */
     self.motionManager = [[CMMotionManager alloc]  init];
     self.lastUpdateTime = [[NSDate alloc] init];
-    
     self.currentPoint  = CGPointMake(0, 144);
-    self.motionManager = [[CMMotionManager alloc]  init];
     self.queue         = [[NSOperationQueue alloc] init];
     
-   self.motionManager.accelerometerUpdateInterval = kUpdateInterval;
-    UIImageView *wallLocal1 = [_wall objectAtIndex: 0];
-    NSLog(@"Some Positions of stuff is Pacman: %f %f, Box1: %f, %f", self.pacman.center.x, self.pacman.center.y, wallLocal1.center.x, wallLocal1.center.y);
+    //Update interval / how ofter it updates accel stored as const float val above.
+    self.motionManager.accelerometerUpdateInterval = kUpdateInterval;
+    
+    //DEBUG STUFF
+    //UIImageView *wallLocal1 = [_wall objectAtIndex: 0];
+    //NSLog(@"Some Positions of stuff is Pacman: %f %f, Box1: %f, %f", self.pacman.center.x, self.pacman.center.y, wallLocal1.center.x, wallLocal1.center.y);
+    
+    //setup the score / highscore stuff
+    //will be set & retrieved from core data asap.
+    self.userId = 0;
+    self.userName = @"Eddie";
+    self.currentScore = [[NSNumber alloc] initWithInt: 0];
+    self.playedDate = [NSDate date];
+    self.livesLeft = [[NSNumber alloc] initWithInt: 4];
+    
 }
 
--(void) viewDidAppear:(BOOL)animated
+//called as the view is drawn to the screen vs when its loaded in memory above - i think.
+-(void) viewDidAppear: (BOOL)animated
 {
+    //set up the Accelerometer to start updating using a que and call back
     [self.motionManager startAccelerometerUpdatesToQueue:self.queue withHandler:
      ^(CMAccelerometerData *accelerometerData, NSError *error)
      {
-         [(id) self setAcceleration: accelerometerData.acceleration];
-         [self performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:NO];
+         if(error == NULL)
+         {
+             [(id) self setAcceleration: accelerometerData.acceleration];
+             [self performSelectorOnMainThread:@selector(Update) withObject:nil waitUntilDone:NO];
+         }
+         else
+         {
+             NSLog(@"Error occured: Message - %@", error.debugDescription);
+         }
      }];
 }
 
-- (void)update
+- (void) Update
 {
     NSTimeInterval secondsSinceLastDraw = -([self.lastUpdateTime timeIntervalSinceNow]);
     
@@ -107,24 +128,29 @@
                                     self.currentPoint.y + yDelta);
 //    NSLog(@"the current x position is: %f \nThe current Y position: %f", self.pacman.center.x, self.pacman.center.y);
     
-    [self movePacman];
+    [self MovePacman];
     self.lastUpdateTime = [NSDate date];
 }
 
-- (void)movePacman
+- (void) MovePacman
 {
-    [self collisionWithExit];
-    [self collisionWithGhosts];
-    [self collsionWithWalls];
-    [self collisionWithBoundaries];
+    //Call and test pacman location in these methods in this order:
+    [self CollisionWithExit]; //did user win?
+    [self CollisionWithGhosts]; //did user die?
+    [self CollsionWithWalls]; //did user bang into the wall blocks (walls Array)
+    [self CollisionWithBoundaries]; //did user bounce off the boundry
+    
+    //store the last location (x, y).
     self.previousPoint = self.currentPoint;
     
+    //grab pacmans frame to set the x y locations.
     CGRect frame = self.pacman.frame;
     frame.origin.x = self.currentPoint.x;
     frame.origin.y = self.currentPoint.y;
     
-//    NSLog(@"Pacman is now in location X: %f Y: %f", self.currentPoint.x, self.currentPoint.y);
+    //NSLog(@"Pacman is now in location X: %f Y: %f", self.currentPoint.x, self.currentPoint.y);
     
+    //assign the new location fram to pacman image.
     self.pacman.frame = frame;
 }
 
@@ -132,7 +158,7 @@
  * Basically resets the pacman position if its in the negative
  * or off screen back to the edge looks like it bounces on edge.
  */
-- (void)collisionWithBoundaries
+- (void) CollisionWithBoundaries
 {
     if (self.currentPoint.x < 0)
     {
@@ -159,61 +185,78 @@
     }
 }
 
-//Triggers end of updates,
-#warning TODO: Look at adding re start button - re start stuff in viewDidLoad, ViewDidAppear
-- (void)collisionWithExit
+//Triggers end of updates.
+- (void) CollisionWithExit
 {
+    NSNumber *WinScore = [[NSNumber alloc] initWithInt: 25];
+    
     if (CGRectIntersectsRect(self.pacman.frame, self.exit.frame))
     {
+//        self.currentScore += WinScore;
+        
         //stop the tilt mech - stop accelerometer updates.
         [self.motionManager stopAccelerometerUpdates];
 
         UIAlertController* alertWinning = [UIAlertController alertControllerWithTitle: @"Congratulations!!"
-                                                                       message: @"You've won the game ~ Big woop"
+                                                                message: @"You've won the game ~ Big woop"
                                                                 preferredStyle: UIAlertControllerStyleAlert];
         
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle: @"OK" style: UIAlertActionStyleDefault
-                                                              handler: ^(UIAlertAction * action)
+        UIAlertAction* winningAction = [UIAlertAction actionWithTitle: @"Restart" style: UIAlertActionStyleDefault
+                                                              handler: ^(UIAlertAction *action)
                                                               {
-                                                                  //do nothing yet.
-                                                                  #warning TODO: add in call to restart method here
+                                                                  //Reset pacman and restart game / accel updates.
+                                                                  self.currentPoint  = CGPointMake(0, 144);
+                                                                  [self viewDidAppear: FALSE];
                                                               }];
         
-        [alertWinning addAction:defaultAction];
+        [alertWinning addAction:winningAction];
         [self presentViewController: alertWinning animated:YES completion:nil];
     }
 }
 
-- (void)collisionWithGhosts
+- (void) CollisionWithGhosts
 {
     CALayer *ghostLayer1 = [self.ghost1.layer presentationLayer];
     CALayer *ghostLayer2 = [self.ghost2.layer presentationLayer];
     CALayer *ghostLayer3 = [self.ghost3.layer presentationLayer];
     
+    //if the pacman img frame colides with ghost/s
     if (CGRectIntersectsRect(self.pacman.frame, ghostLayer1.frame) || CGRectIntersectsRect(self.pacman.frame, ghostLayer2.frame)
         || CGRectIntersectsRect(self.pacman.frame, ghostLayer3.frame) )
     {
+        [self.motionManager stopAccelerometerUpdates];
+        NSNumber *lowerBound = [[NSNumber alloc] initWithInt: 25];
         
-        self.currentPoint  = CGPointMake(0, 144);
-        UIAlertController* alertLooser = [UIAlertController alertControllerWithTitle:@"Oops!!!"
+//        if(self.currentScore >= lowerBound)
+//        {
+//            self.currentScore -= lowerBound;
+//        }
+//        else
+//        {
+//            self.currentScore = 0;
+//        }
+       UIAlertController* AlertLooser = [UIAlertController alertControllerWithTitle:@"Oops!!!"
                                                                        message:@"Mission Failed - Really is it hard to play..."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action)
+       UIAlertAction* looserAction = [UIAlertAction actionWithTitle:@"Restart" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction *action)
                                         {
-                                            //do nothing yet.
-                                            #warning TODO: add in call to restart method here
+                                           //restart the game / gyro updates
+                                           //NSLog(@"Inside the Restart button after death async callback type call");
+                                           self.currentPoint  = CGPointMake(0, 144);
+                                           [self viewDidAppear: FALSE];
                                         }];
         
-        [alertLooser addAction:defaultAction];
-        [self presentViewController: alertLooser animated:YES completion:nil];
+        //add action to the alertController
+        [AlertLooser addAction: looserAction];
         
+        //Call the alertController view / Alert Box pop up.
+        [self presentViewController: AlertLooser animated: YES completion: nil];
     }
-    
 }
 
-- (void)collsionWithWalls
+- (void) CollsionWithWalls
 {
     CGRect frame = self.pacman.frame;
     frame.origin.x = self.currentPoint.x;

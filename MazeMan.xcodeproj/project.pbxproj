@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C5D3CBC218E881300793908 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5D3CBB218E881300793908 /* CoreMotion.framework */; };
 		2C5D3CBE218E882E00793908 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5D3CBD218E882E00793908 /* QuartzCore.framework */; };
+		2C5D3CC0218F0CBF00793908 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D3CBF218F0CBF00793908 /* README.md */; };
+		2C5D3CC3218F106300793908 /* Scores.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D3CC1218F106300793908 /* Scores.xcdatamodeld */; };
 		2C6ED130218DE35E00F57CAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6ED12F218DE35E00F57CAD /* AppDelegate.m */; };
 		2C6ED133218DE35E00F57CAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6ED132218DE35E00F57CAD /* ViewController.m */; };
 		2C6ED136218DE35E00F57CAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6ED134218DE35E00F57CAD /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		2C5D3CBB218E881300793908 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2C5D3CBD218E882E00793908 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2C5D3CBF218F0CBF00793908 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		2C5D3CC2218F106300793908 /* Scores.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Scores.xcdatamodel; sourceTree = "<group>"; };
 		2C6ED12B218DE35E00F57CAD /* MazeMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6ED12E218DE35E00F57CAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2C6ED12F218DE35E00F57CAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		2C6ED12D218DE35E00F57CAD /* MazeMan */ = {
 			isa = PBXGroup;
 			children = (
+				2C5D3CBF218F0CBF00793908 /* README.md */,
 				2C6ED12E218DE35E00F57CAD /* AppDelegate.h */,
 				2C6ED12F218DE35E00F57CAD /* AppDelegate.m */,
 				2C6ED131218DE35E00F57CAD /* ViewController.h */,
@@ -126,6 +131,7 @@
 				2C6ED139218DE35F00F57CAD /* LaunchScreen.storyboard */,
 				2C6ED13C218DE35F00F57CAD /* Info.plist */,
 				2C6ED13D218DE35F00F57CAD /* main.m */,
+				2C5D3CC1218F106300793908 /* Scores.xcdatamodeld */,
 			);
 			path = MazeMan;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 			files = (
 				2C6ED13B218DE35F00F57CAD /* LaunchScreen.storyboard in Resources */,
 				2C6ED138218DE35F00F57CAD /* Assets.xcassets in Resources */,
+				2C5D3CC0218F0CBF00793908 /* README.md in Resources */,
 				2C6ED136218DE35E00F57CAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +292,7 @@
 			files = (
 				2C6ED133218DE35E00F57CAD /* ViewController.m in Sources */,
 				2C6ED13E218DE35F00F57CAD /* main.m in Sources */,
+				2C5D3CC3218F106300793908 /* Scores.xcdatamodeld in Sources */,
 				2C6ED130218DE35E00F57CAD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,6 +608,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2C5D3CC1218F106300793908 /* Scores.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2C5D3CC2218F106300793908 /* Scores.xcdatamodel */,
+			);
+			currentVersion = 2C5D3CC2218F106300793908 /* Scores.xcdatamodel */;
+			path = Scores.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2C6ED123218DE35E00F57CAD /* Project object */;
 }

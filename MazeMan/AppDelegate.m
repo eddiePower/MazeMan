@@ -9,11 +9,9 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -52,5 +50,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+//force the iphone view presentation to landscape Left so Gyro is natural directions vs reveresed for Right landscape setting.
+- (enum UIInterfaceOrientationMask)application: (UIApplication *)application supportedInterfaceOrientationsForWindow: (UIWindow *)window
+{
+    return UIInterfaceOrientationMaskLandscapeRight;
+}
 
 @end

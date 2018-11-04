@@ -21,54 +21,67 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="zyt-Oy-pfJ">
                                 <rect key="frame" x="20" y="44" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="wall0"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="weg-PE-QdP">
                                 <rect key="frame" x="80" y="76" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="wall1"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="j7H-hv-lNI">
                                 <rect key="frame" x="141" y="108" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="wall2"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="LPW-0m-IPb">
                                 <rect key="frame" x="274" y="207" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="wall3"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="exit" translatesAutoresizingMaskIntoConstraints="NO" id="ly2-d8-fX9">
                                 <rect key="frame" x="670" y="190" width="46" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="exit"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="ghost" translatesAutoresizingMaskIntoConstraints="NO" id="n0E-op-qB5">
                                 <rect key="frame" x="181" y="317" width="46" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ghost1"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="ghost" translatesAutoresizingMaskIntoConstraints="NO" id="Yuw-dH-OTW">
                                 <rect key="frame" x="371" y="44" width="46" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ghost3"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="ghost" translatesAutoresizingMaskIntoConstraints="NO" id="VUC-M8-wVy">
                                 <rect key="frame" x="427" y="317" width="46" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ghost2"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="pacman" translatesAutoresizingMaskIntoConstraints="NO" id="9sj-uC-K41">
                                 <rect key="frame" x="20" y="207" width="46" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="pacman"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="f2u-xG-Ydm">
                                 <rect key="frame" x="656" y="44" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="wall7"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="7z6-ay-cym">
                                 <rect key="frame" x="588" y="281" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="wall5"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="aXX-5U-3xH">
                                 <rect key="frame" x="649" y="317" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="wall6"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="squareWall" translatesAutoresizingMaskIntoConstraints="NO" id="Vcc-dO-O24">
                                 <rect key="frame" x="526" y="240" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <accessibility key="accessibilityConfiguration" identifier="wall4"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
